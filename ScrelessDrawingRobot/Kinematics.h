@@ -1,9 +1,10 @@
-/*
- * Kinematics.h
- *
- * Created: 23/04/2025 04:50:36 p. m.
- *  Author: alexy
- */ 
+/**
+ * @file Kinematics.h
+ * @brief Librería para el cálculo de cinemática inversa del robot de dibujo
+ * 
+ * Esta librería contiene las funciones para calcular los ángulos de las articulaciones
+ * necesarios para posicionar el efector final en coordenadas cartesianas específicas.
+ */
 
 
 #ifndef KINEMATICS_H_
@@ -13,15 +14,15 @@
 #include <stdint.h>
 
 // Constantes del robot (longitudes en milimetros)
-#define L1 35.0f
-#define L2 55.13f
-#define L3 45.0f
-#define L4 13.2f
-#define L5 25.8f
-#define D1 18.6f
-#define D2 25.0f
-#define RAD_TO_DEG (180.0f / M_PI)
-#define DEG_TO_RAD (M_PI / 180.0f)
+#define L1 35.0f       // Longitud A-B y C-D
+#define L2 55.13f      // Longitud B-F
+#define L3 45.0f       // Longitud B-E y D-E
+#define L4 13.2f       // Longitud E-F
+#define L5 25.8f       // Distancia A-C
+#define D1 18.6f       // Offset en X
+#define D2 25.0f       // Offset en Y
+#define RAD_TO_DEG (180.0f / M_PI)  // Conversión de radianes a grados
+#define DEG_TO_RAD (M_PI / 180.0f)  // Conversión de grados a radianes
 
 
 /**

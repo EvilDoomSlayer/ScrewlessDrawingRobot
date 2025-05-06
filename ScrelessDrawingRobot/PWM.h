@@ -1,15 +1,25 @@
+/**
+ * @file PWM.h
+ * @brief Generación de señales PWM utilizando temporizadores hardware
+ * 
+ * Esta librería permite generar señales PWM utilizando los temporizadores
+ * del microcontrolador ATmega, con soporte para diferentes modos y configuraciones.
+ */
+
 #ifndef PWM_H
 #define PWM_H
 
 #include <avr/io.h>
 
-// Define F_CPU si no est� definido
+/// Frecuencia del reloj por defecto (16MHz)
 #ifndef F_CPU
 #define F_CPU 16000000UL // 16 MHz
 #endif
 
+/// Selector de temporizador
 enum TimerSelector { TIMER0, TIMER1, TIMeR2 };
-	
+
+/// Modos de operación PWM
 enum PWMMode {
 	UNDEFINED,
 	FAST_PWM,
@@ -23,10 +33,16 @@ enum PWMMode {
 	_10_BIT_PHASE_CORRECT_PWM
 };
 
+/// Modo de salida PWM
 enum PWMOutput { NON_INVERTED, INVERTED };
-	
+
+/// Canal PWM
 enum PWMChannel { CHANNEL_A, CHANNEL_B };
 
+/**
+ * @class PWM
+ * @brief Clase para generación de señales PWM
+ */
 class PWM {
 	public:
 	/**

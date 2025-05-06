@@ -1,9 +1,10 @@
-/*
- * Servo.h
- *
- * Created: 22/04/2025 02:26:06 p. m.
- *  Author: alexy
- */ 
+/**
+ * @file Servo.h
+ * @brief Control de servomotores mediante PWM
+ * 
+ * Esta librería proporciona una interfaz para controlar servomotores estándar
+ * utilizando señales PWM generadas por los temporizadores del microcontrolador.
+ */
 
 
 #ifndef SERVO_H
@@ -11,6 +12,10 @@
 
 #include "PWM.h"
 
+/**
+ * @class Servo
+ * @brief Clase para controlar servomotores mediante PWM
+ */
 class Servo : public PWM {
 	public:
 	/**
