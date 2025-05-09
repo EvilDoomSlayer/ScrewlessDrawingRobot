@@ -19,7 +19,9 @@
 
 // Posiciones del servo de elevación
 #define PEN_UP 1600       // Posición levantada (lápiz arriba)
-#define PEN_DOWN 1800     // Posición bajada (lápiz abajo)
+#define PEN_DOWN 1910     // Posición bajada (lápiz abajo)
+#define ERASER_UP  1500
+#define ERASER_DOWN 1850
 
 // Posición HOME del robot
 const double HOME_X = 72.9; // Coordenada X de la posición home
@@ -84,6 +86,16 @@ void raisePen();
  * Baja el lápiz (movimiento suavizado)
  */
 void lowerPen();
+
+/**
+ * Levanta el lápiz para que entre en el borrador (movimiento suavizado)
+ */
+void raiseEraser();
+
+/**
+ * Baja el lápiz para que entre en el borador(movimiento suavizado)
+ */
+void lowerEraser();
 
 /**
  * Mueve el robot a la posición HOME y levanta el lápiz

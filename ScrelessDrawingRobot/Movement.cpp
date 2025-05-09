@@ -120,7 +120,7 @@ void raisePen() {
     if (penPosition != PEN_UP) {
         const int steps = 30;  // Pasos para suavizar el movimiento
         for (int i = 0; i <= steps; i++) {
-            int pos = PEN_DOWN + (PEN_UP - PEN_DOWN) * i / steps;
+            int pos = penPosition + (PEN_UP - penPosition) * i / steps;
             liftServo.write(pos);
             delay(10);
         }
@@ -132,7 +132,7 @@ void lowerPen() {
     if (penPosition != PEN_DOWN) {
         const int steps = 30;  // Pasos para suavizar el movimiento
         for (int i = 0; i <= steps; i++) {
-            int pos = PEN_UP - (PEN_UP - PEN_DOWN) * i / steps;
+            int pos = penPosition - (penPosition - PEN_DOWN) * i / steps;
             liftServo.write(pos);
             delay(10);
         }
@@ -140,12 +140,37 @@ void lowerPen() {
     }
 }
 
+
+void raiseEraser() {
+    if (penPosition != ERASER_UP) {
+        const int steps = 30;  // Pasos para suavizar el movimiento
+        for (int i = 0; i <= steps; i++) {
+            int pos = penPosition + (ERASER_UP - penPosition) * i / steps;
+            liftServo.write(pos);
+            delay(10);
+        }
+        penPosition = ERASER_UP;
+    }
+}
+
+void lowerEraser() {
+    if (penPosition != ERASER_DOWN) {
+        const int steps = 30;  // Pasos para suavizar el movimiento
+        for (int i = 0; i <= steps; i++) {
+            int pos = penPosition - (penPosition - ERASER_DOWN) * i / steps;
+            liftServo.write(pos);
+            delay(10);
+        }
+        penPosition = ERASER_DOWN;
+    }
+}
+
 void goHome() {
-    raisePen();
+    raiseEraser();
     delay(500);
     polynomialInterpolation(HOME_X, HOME_Y, LINEAR_STEPS);
     delay(500);
-    lowerPen();
+    lowerEraser();
     delay(1000);
 }
 

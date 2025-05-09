@@ -65,11 +65,11 @@ void setup() {
     Wire.begin();
     
     // Configuración inicial - llevar a posición HOME
-    liftServo.write(PEN_UP);
+    liftServo.write(ERASER_UP);
     moveTo(HOME_X, HOME_Y);
     delay(1000);
-    lowerPen();
-    delay(3000);
+    lowerEraser();
+    delay(5000);
     
     currentState = NORMAL_OPERATION;
 }
@@ -125,11 +125,21 @@ void handleNormalOperation() {
  * @brief Maneja el modo de calibración
  */
 void handleCalibrationMode() {
+  raiseEraser();
+  delay(2000);
+  lowerEraser();
+  delay(2000);
+  raisePen();
+  delay(2000);
+  lowerPen();
+  delay(2000);
+  /*
   // Movimientos de calibración
   polynomialInterpolation(70.85, 27.59, LINEAR_STEPS);
   delay(3000);
   polynomialInterpolation(-5.37, 29.02, LINEAR_STEPS);
   delay(3000);
+  */
 }
 
 /**
